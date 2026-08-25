@@ -1,61 +1,90 @@
-# Blinkit Sales Analysis — Retail EDA Case Study
+# Blinkit Retail Sales Analysis
 
-A Python and Pandas exploratory analysis of item and outlet sales data. The project examines item categories, fat content, outlet type, outlet location, visibility, weight, ratings, and sales to identify practical retail performance questions.
+A portfolio-ready **Python and Jupyter Notebook case study** that analyses item-level retail sales across product categories, fat-content segments, outlet formats, location tiers, outlet sizes, and establishment-year cohorts.
 
-> **Portfolio focus:** data cleaning, category standardization, grouped analysis, outlet comparison, KPI calculation, and visual storytelling.
+> **Portfolio focus:** data cleaning, label standardisation, KPI calculation, grouped analysis, comparative visualisation, and business-oriented storytelling.
 
 ## Business objective
 
-Retail operators need to understand which item groups and outlet formats contribute most to sales and how product attributes relate to observed performance. This case study turns an item-outlet extract into a structured exploratory workflow.
+Retail teams need to understand which product categories and outlet formats contribute most to observed sales. This project converts a raw item-outlet extract into a reproducible analytical workflow that answers practical questions about category mix, outlet performance, location patterns, and data quality.
 
-## Verified dataset facts
+## What is included
 
-The source CSV contains **8,523 records**, 12 columns, zero duplicate rows, and 1,463 empty cells [1]. After standardizing the fat-content labels, the extract produces **$1,201,681.48** in total sales [1].
+| Artifact | Purpose |
+|---|---|
+| `blinkit-retail-sales-analysis.ipynb` | Clean, executed notebook with professional headings, KPIs, charts, and insights |
+| `blinkit_data.csv` | Source item-outlet sales extract |
+| `images/` | High-resolution chart exports for portfolio and README use |
+| `resume-project-description.md` | Resume-ready project summary, bullets, and interview talking points |
+| `scripts/validate_data.py` | Data-quality validation checks |
+| `blinkit-sales-analysis.ipynb` | Original notebook retained for reference |
+| `Blinkit Analysis.pptx` | Original supplementary presentation |
 
-| Metric | Verified result |
+## Verified dataset profile
+
+The source extract contains **8,523 records**, **12 columns**, **zero duplicate rows**, and **1,463 missing cells**, all attributable to missing item-weight values. After standardising inconsistent fat-content labels such as `LF`, `reg`, and `low fat`, the notebook calculates total sales of **1,201,681.48 dataset units** and an average rating of **3.97 / 5**.
+
+| Metric | Result |
 |---|---:|
 | Records | 8,523 |
 | Columns | 12 |
-| Empty cells | 1,463 |
 | Duplicate rows | 0 |
-| Total sales | $1,201,681.48 |
-| Top item type by sales | Fruits and Vegetables: $178,124.08 |
-| Top outlet type by sales | Supermarket Type1 |
-| Average rating | 3.97 |
+| Missing cells | 1,463 |
+| Missing item weights | 1,463 |
+| Negative sales records | 0 |
+| Total sales | 1,201,681.48 |
+| Average sale per record | 140.99 |
+| Average rating | 3.97 / 5 |
 
-## Visual evidence
+## Analysis and visual showcase
 
-![Top item groups](images/blinkit_top_item_groups.png)
+### 1. Sales by item category
 
-The chart summarizes the leading item groups from the same sales file used by the notebook. It provides a quick visual entry point before reviewing the full exploratory workflow.
+The horizontal ranking chart identifies **Fruits and Vegetables** as the leading category in observed sales, followed by Snack Foods and Household. Horizontal bars and end labels make the comparison easy to scan.
+
+![Sales by item category](images/sales_by_item_category.png)
+
+### 2. Outlet-format performance
+
+The two-panel comparison separates **total sales** from **average sale per record**, preventing outlet scale from being confused with normalised performance.
+
+![Outlet format performance](images/outlet_format_performance.png)
+
+### 3. Product mix by fat content
+
+The cleaned fat-content comparison shows how observed sales are distributed between Regular and Low Fat products.
+
+![Sales by fat content](images/sales_by_fat_content.png)
+
+### 4. Outlet location and cohort analysis
+
+Additional visuals compare fat-content mix by location tier, sales by outlet establishment year, sales by outlet size, and sales by location tier.
+
+| Visual | File |
+|---|---|
+| Location tier and fat-content mix | `images/tier_fat_content_mix.png` |
+| Sales by establishment year | `images/sales_by_establishment_year.png` |
+| Sales by outlet size and location tier | `images/outlet_size_and_tier.png` |
+| Item visibility vs. sales | `images/visibility_vs_sales.png` |
 
 ## Key business insights
 
-Fruits and Vegetables is the leading item type by observed sales at **$178,124.08**, and Supermarket Type1 is the leading outlet type by total sales in the extract. The average rating is **3.97**, which should be interpreted alongside sales volume and missing-value patterns rather than as a standalone quality KPI.
+The analysis finds that Fruits and Vegetables is the highest-sales item category in this extract, while Supermarket Type1 is the highest-sales outlet format. Regular and Low Fat sales can be compared consistently only after label standardisation. Location tiers and outlet sizes provide useful context for sales concentration, while the visibility chart is descriptive and should not be interpreted as evidence of causality.
 
-The dataset contains 1,463 empty cells, so comparisons should document whether missing item weight, visibility, or outlet attributes are excluded, imputed, or retained. The notebook standardizes inconsistent fat-content labels such as `LF`, `reg`, and `low fat` before grouped analysis.
+The data-quality review is also a key finding: 1,463 item-weight values are missing. Any weight-based analysis should explicitly document whether those records are excluded or imputed.
 
 ## Analytical workflow
 
-The notebook profiles the CSV, reviews data types and missingness, standardizes column names, harmonizes fat-content labels, calculates total sales, and compares sales by item type and outlet characteristics. The project presentation is included as a supplementary artifact.
-
-## Data-quality checks
-
-The validation script checks the expected 12 columns, row count, duplicate count, non-negative sales, numeric rating conversion, standardized fat-content categories, and the documented total sales. It also reports missing cells so a reviewer can see where additional production-grade data-quality work is needed.
-
-## Repository structure
-
-```text
-├── Blinkit Analysis.pptx
-├── README.md
-├── blinkit-sales-analysis.ipynb
-├── blinkit_data.csv
-├── images/
-│   └── blinkit_top_item_groups.png
-├── requirements.txt
-└── scripts/
-    └── validate_data.py
-```
+1. Load the CSV and standardise column names.
+2. Profile shape, data types, duplicates, missing values, and numeric ranges.
+3. Harmonise inconsistent fat-content labels.
+4. Calculate headline KPIs for sales, ratings, and record counts.
+5. Compare sales by item category and fat-content segment.
+6. Compare outlet formats using total and average sales.
+7. Analyse location tier, outlet size, and establishment-year cohorts.
+8. Explore item visibility versus record-level sales.
+9. Generate business insights and document limitations.
+10. Save portfolio-ready PNG charts under `images/`.
 
 ## How to reproduce
 
@@ -63,24 +92,24 @@ The validation script checks the expected 12 columns, row count, duplicate count
 git clone https://github.com/Corvus06655/blinkit-sales-analysis.git
 cd blinkit-sales-analysis
 python -m venv .venv
-# Windows: .venv\Scripts\activate
-# macOS/Linux: source .venv/bin/activate
+
+# Windows
+.venv\\Scripts\\activate
+
+# macOS/Linux
+source .venv/bin/activate
+
 pip install -r requirements.txt
 python scripts/validate_data.py
 ```
 
-Then open `blinkit-sales-analysis.ipynb` in Jupyter and run the notebook cells from top to bottom.
+Open `blinkit-retail-sales-analysis.ipynb` in Jupyter and run the cells from top to bottom.
 
-## Data provenance and limitations
+## Limitations
 
-The repository contains the CSV used for this educational retail case study. It is not a live Blinkit internal reporting feed, and the results should not be interpreted as current company performance. Because key fields contain missing values, operational decisions should use a documented data dictionary, refresh timestamp, and missingness policy.
-
-## References
-
-[1]: blinkit_data.csv — item-outlet sales extract.
-[2]: blinkit-sales-analysis.ipynb — cleaning, standardization, and exploratory workflow.
-[3]: images/blinkit_top_item_groups.png — item-group visualization generated from project data.
+This repository contains an educational item-outlet sales extract, not a live Blinkit internal reporting feed. It does not establish profitability, delivery performance, customer retention, or causal drivers of sales. Outlet establishment year is treated as a cohort dimension rather than a daily or monthly time series. Missing item-weight values are retained and reported rather than silently imputed.
 
 ## Author
 
-**Mayank Srivastava** · [GitHub](https://github.com/Corvus06655) · [LinkedIn](https://linkedin.com/in/mayank-srivastava-076020215)
+**Mayank Srivastava**  \
+[GitHub](https://github.com/Corvus06655) · [LinkedIn](https://linkedin.com/in/mayank-srivastava-076020215)
