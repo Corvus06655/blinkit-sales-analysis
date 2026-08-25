@@ -93,8 +93,6 @@ The extract does not contain customer-level behaviour, orders over time, deliver
 ├── blinkit_data.csv
 ├── Blinkit_Retail_Sales_Analysis.pptx
 ├── blinkit_top_item_groups.png
-├── interview-preparation.md
-├── resume-bullets.md
 ├── requirements.txt
 └── scripts/
     └── validate_data.py
